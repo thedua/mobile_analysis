@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Project</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'project/css/bootstrap.min.css' %} ">
+    <link rel="stylesheet" href="{% static 'project/css/font-awesome.min.css' %} ">
+    <link rel="stylesheet" href="{% static 'project/css/wave/waves.min.css' %} ">
+    <link rel="stylesheet" href="{% static 'project/css/notika-custom-icon.css' %} ">
+    <link rel="stylesheet" href="{% static 'project/css/main.css' %} ">
+    <link rel="stylesheet" href="{% static 'project/style.css' %} ">
+    <link rel="stylesheet" href="{% static 'project/css/responsive.css' %} ">
+</head>
+
+<body>
+    <div class="error-page-area">
+        <div class="error-page-wrap">
+            <i class="notika-icon notika-alarm"></i>
+            <h2>{{mobile.name}} <span class="counter">100</span>%</h2>
+            <p>Mobile trained on latest trained model.</p>
+            <a href="{% url 'project:index' %}" class="btn">Home</a>
+        </div>
+    </div>
+
+
+    <script src="{% static 'project/js/vendor/jquery-1.12.4.min.js' %} "></script>
+    <script src="{% static 'project/js/bootstrap.min.js' %} "></script>
+    <script src="{% static 'project/js/counterup/jquery.counterup.min.js' %} "></script>
+    <script src="{% static 'project/js/counterup/waypoints.min.js' %} "></script>
+    <script src="{% static 'project/js/counterup/counterup-active.js' %} "></script>
+
+</body>
+
+</html>

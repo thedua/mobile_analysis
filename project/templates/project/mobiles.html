@@ -1,0 +1,10 @@
+<form class="" action="{% url 'project:mobile_list' %}" method="post">
+{% csrf_token %}
+<select class="" name="mobile" required>
+  <option value="">Select Mobile</option>
+  {% for data in mobiles %}
+    <option value="{{data.slug}}">{{data.name}}</option>
+  {% endfor %}
+  <input type="submit" name="" value="Analysis">
+</select>
+</form>

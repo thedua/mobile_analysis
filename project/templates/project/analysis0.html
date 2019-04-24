@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function () {
+  var token = $('input[name=csrfmiddlewaretoken]').val();
+
+  $.ajax({
+    type: "POST",
+    url: "/project/getMobileData/",
+    data: {
+        csrfmiddlewaretoken: token,
+        slug: "{{mobile.slug}}"
+    },
+    success: function(data) {
+					console.log(data);
+          list = []
+					for(key in data){
+            var i = 0;
+            var temp = {};
+            if(key=='high'){
+              temp['exploded'] = true
+            }
+            for(val in data[key]){
+              if(i==0){
+                temp['y'] = data[key][val];
+                i = 1;
+              }else{
+                temp['name'] = data[key][val];
+              }
+            }
+            list.push(temp)
+					}
+          console.log(list);
+
+          var chart = new CanvasJS.Chart("chartContainer", {
+          	exportEnabled: true,
+          	animationEnabled: true,
+          	title:{
+          		text: "{{mobile.name}} - Analyize"
+          	},
+          	legend:{
+          		cursor: "pointer",
+          		itemclick: explodePie
+          	},
+          	data: [{
+          		type: "pie",
+          		showInLegend: true,
+          		toolTipContent: "{name}: <strong>{y}%</strong>",
+          		indexLabel: "{name} - {y}%",
+          		dataPoints: list
+          	}]
+          });
+          chart.render();
+
+    },
+    error: function(ts) {
+          alert(ts.responseText)
+    }
+  });
+
+
+}
+
+function explodePie (e) {
+	if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	} else {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+	}
+	e.chart.render();
+
+}
+</script>
+</head>
+<body>
+  <form class="" action="" method="post">
+    {% csrf_token %}
+  </form>
+  <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>

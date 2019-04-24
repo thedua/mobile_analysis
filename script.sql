@@ -1,0 +1,10 @@
+DROP DATABASE IF EXISTS `projectdb`;
+CREATE DATABASE `projectdb`
+    DEFAULT CHARACTER SET utf8
+    DEFAULT COLLATE utf8_general_ci;
+
+USE `projectdb`;
+GRANT ALL PRIVILEGES ON projectdb.* TO `user`@`localhost` IDENTIFIED BY '+Ee-Z!bDe^fH!c2#'
+
+WITH GRANT OPTION;
+FLUSH PRIVILEGES;

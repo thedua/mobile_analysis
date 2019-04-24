@@ -1,0 +1,63 @@
+{% extends "project/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="breadcomb-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="breadcomb-list">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="breadcomb-wp">
+									<div class="breadcomb-icon">
+										<i class="notika-icon notika-phone"></i>
+									</div>
+									<div class="breadcomb-ctn">
+										<h2>Train Mobiles</h2>
+										<p>Welcome to Notika <span class="bread-ntd">Train Mobile on Latest Trained Model</span></p>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="sale-statistic-area">
+    <div class="container">
+        <div class="row">
+
+          {% for mobile in mobiles  %}
+          <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+              <div class="statistic-right-area notika-shadow mg-tb-30 sm-res-mg-t-0">
+                  <div class="past-day-statis">
+                      <h2>{{mobile.name}}</h2>
+                      <img src="{% static 'project/img/mobile.png' %}" alt="img of 127*207">
+                  </div>
+                  <div class="dash-widget-visits"></div>
+                  <div class="past-statistic-an">
+                      <div class="past-statistic-ctn">
+                          <h3><span class="">{{mobile.company}}</span></h3>
+                          <p>Smartphone</p>
+                      </div>
+
+                  </div>
+                  <div class="past-statistic-an">
+                    <a class="center" href="{% url 'dashboard:train_mobile' mobile.slug %}">
+                      <button class="btn notika-btn-indigo btn-reco-mg btn-button-mg waves-effect btn-train ">Train Mobile</button>
+                    </a>
+                  </div>
+
+              </div>
+          </div>
+          {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock  %}

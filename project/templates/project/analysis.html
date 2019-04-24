@@ -1,0 +1,139 @@
+{% extends "project/base.html" %}
+{% load static %}
+
+{% block javascript %}
+	<script type="text/javascript">
+		var slug = "{{mobile.slug}}"
+	</script>
+	<script src="{% static 'project/js/graph.js' %} "></script>
+{% endblock  %}
+
+{% block content %}
+
+<div class="breadcomb-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="breadcomb-list">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+							<div class="breadcomb-wp">
+								<div class="breadcomb-icon">
+									<i class="notika-icon notika-bar-chart"></i>
+								</div>
+								<div class="breadcomb-ctn">
+									<h2>{{mobile.name}}</h2>
+									<p><span class="bread-ntd">Mobile Analysis</span></p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="sale-statistic-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
+                <div class="sale-statistic-inner notika-shadow mg-tb-30">
+                    <div class="curved-inner-pro">
+                        <div class="curved-ctn">
+                            <h2>Overall Analysis</h2>
+                            <p>Based on all reviews for this phone.</p>
+                        </div>
+                    </div>
+                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+										<form class="" action="" method="post">
+											{% csrf_token %}
+										</form>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                <div class="statistic-right-area notika-shadow mg-tb-30 sm-res-mg-t-0">
+									<div class="recent-post-ctn">
+											<div class="recent-post-title">
+													<h2>{{mobile.name}}</h2>
+											</div>
+									</div>
+									<div class="recent-post-items">
+											<div class="recent-post-signle rct-pt-mg-wp">
+													<div class="recent-post-flex">
+															<div class="recent-post-it-ctn">
+																	<h2>Brand</h2>
+																	<span>{{phone.Brand}}</span>
+															</div>
+													</div>
+											</div>
+											<br>
+											<div class="recent-post-signle rct-pt-mg-wp">
+													<div class="recent-post-flex">
+															<div class="recent-post-it-ctn">
+																	<h2>Size</h2>
+																	<span>{{phone.size}}</span>
+															</div>
+													</div>
+											</div>
+											<br>
+											<div class="recent-post-signle rct-pt-mg-wp">
+													<div class="recent-post-flex">
+															<div class="recent-post-it-ctn">
+																	<h2>Features</h2>
+																	<span>{{phone.features_c}}</span>
+															</div>
+													</div>
+											</div>
+
+									</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="visitor-sv-tm-area">
+		<div class="container">
+				<div class="row">
+						<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+								<div class="visitor-sv-tm-int">
+										<div class="contact-hd mg-bt-ant-inner">
+												<h2>Camera</h2>
+										</div>
+										<div class="visitor-sv-tm-ch">
+												<div id="cameraAnalysis" style="height: 150px; width: 100%;"></div>
+												<p style="margin-top:30px">{{phone.primary_}} and {{phone.secondary}}</p>
+										</div>
+								</div>
+						</div>
+						<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+								<div class="visitor-sv-tm-int sm-res-mg-t-30">
+										<div class="contact-hd mg-bt-ant-inner server-sts-rgt">
+												<h2>Battery</h2>
+										</div>
+										<div class="visitor-st-ch">
+												<div id="batteryAnalysis" style="height: 150px; width: 100%;"></div>
+												<p style="margin-top:30px">{{phone.battery_c}}</p>
+										</div>
+								</div>
+						</div>
+						<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+								<div class="visitor-sv-tm-int sm-res-mg-t-30 tb-res-mg-t-30 tb-res-ds-n dk-res-ds">
+										<div class="contact-hd mg-bt-ant-inner">
+												<h2>Memory</h2>
+										</div>
+										<div class="visitor-st-ch visitor-ov-ct">
+												<div id="memoryAnalysis" style="height: 150px; width: 100%;"></div>
+												<p style="margin-top:30px">{{phone.internal}}({{phone.os}})</p>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+</div>
+
+
+{% endblock  %}
