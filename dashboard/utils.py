@@ -1,9 +1,11 @@
+import numpy as np
 import re
 import nltk
-nltk.download('stopwords')
+#nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 import pickle
+from sklearn.feature_extraction.text import CountVectorizer
 
 def total_trained_data():
     corpus = pickle.load(open('corpus.plk','rb'))
@@ -32,10 +34,12 @@ def train_data(reviews):
     start = len(corpus)
     corpus = corpus + reviews
 
-    from sklearn.feature_extraction.text import CountVectorizer
     cv = CountVectorizer(max_features = 12000)
-    X = cv.fit_transform(corpus).toarray()
+    X = cv.fit_transform(corpus)
+    X = X.toarray()
+
     y_train = X[(start-1):-1, :]
+
 
     result = estimator.predict(y_train)
 
