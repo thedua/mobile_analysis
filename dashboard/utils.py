@@ -36,7 +36,7 @@ def train_data(reviews):
 
     cv = CountVectorizer(max_features = 12000)
     X = cv.fit_transform(corpus)
-    X = X.toarray()
+    #X = X.toarray()
 
     y_train = X[(start-1):-1, :]
 
