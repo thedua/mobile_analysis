@@ -14,6 +14,17 @@ class Mobile(models.Model):
     COMPANY_NAME = (
         ('Xiaomi', 'Xiaomi'),
         ('Samsumg', 'Samsumg'),
+	('Asus', 'Asus'),
+	('Honor', 'Honor'),
+	('Moto', 'Moto'),
+	('Nokia', 'Nokia'),
+	('Realme',  'Realme'),
+	('Oneplus', 'Oneplus'),
+	('LG','LG'),
+	('Oppo','Oppo'),
+	('Huawei','Huawei'),
+
+
     )
 
     name = models.CharField(max_length=100, unique=True)
@@ -60,7 +71,7 @@ class MobileReviews(models.Model):
             for review in reviews:
                 text = get_clean_text(review)
                 if text:
-                    tweet = unidecode(review)
+                    tweet = unidecode(str(review))
                     analysis = TextBlob(tweet)
                     self.sentiment = analysis.sentiment.polarity
 
