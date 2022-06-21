@@ -19,7 +19,7 @@ MarkupSafe==1.1.0
 matplotlib==3.0.2
 mysqlclient==1.4.2.post1
 nltk==3.4
-numpy==1.16.0
+numpy==1.22.0
 pandas==0.24.0
 Pillow==5.4.1
 pycparser==2.19
